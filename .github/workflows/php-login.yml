@@ -1,0 +1,40 @@
+name: CI PHP Login
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v4
+
+    - name: Configurar PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+
+    - name: Instalar dependências
+      run: |
+        sudo apt-get install -y php-cli php-mbstring
+        echo "Dependências instaladas."
+
+    - name: Rodar testes
+      run: |
+        echo "Simulando testes..."
+        php -l index.php
+
+    - name: Chamando workflow de CD
+      uses: peter-evans/workflow-dispatch@v1
+      with:
+        # Repositório remoto que contém o CD
+        repository: Pgabriel2605/phpworkflows
+        workflow: cd.yml  # Nome do workflow do CD
+        ref: master  # Branch que será usada
+        inputs: |
+          repo_name: login.php
