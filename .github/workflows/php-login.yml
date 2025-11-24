@@ -33,7 +33,7 @@ jobs:
       uses: peter-evans/workflow-dispatch@v1
       with:
         repository: Pgabriel2605/php-workflowss
-        workflow: cd.yml  # Certifique-se de que o workflow de CD no outro repositório chama-se exatamente cd.yml
+        workflow: cd.yml  # Certifique-se de que o workflow de CD no outro repositório chama-se exatamente cd.yml oiiii
         ref: master
         inputs: |
           repo_name: Pgabriel2605/logiin-php
