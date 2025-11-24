@@ -3,8 +3,8 @@ name: CI PHP Login
 on:
   push:
     branches:
-      - C-Master   # branch do seu projeto
-  workflow_dispatch:  # permite rodar manualmente
+      - C-Master
+  workflow_dispatch:
 
 jobs:
   call-reusable-ci:
@@ -12,4 +12,4 @@ jobs:
     with:
       php-version: '8.2'
     secrets:
-      REPO_PAT: ${{ secrets.REPO_PAT }}
+      REPO_PAT: ${{ secrets.NEW_PAT }}  # aqui usamos o nome do secret que você criou
