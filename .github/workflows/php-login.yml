@@ -32,9 +32,8 @@ jobs:
     - name: Chamando workflow de CD
       uses: peter-evans/workflow-dispatch@v1
       with:
-        # Repositório remoto que contém o CD
-        repository: Pgabriel2605/phpworkflows
-        workflow: cd.yml  # Nome do workflow do CD
-        ref: master  # Branch que será usada
+        repository: Pgabriel2605/php-workflowss
+        workflow: cd.yml  # Certifique-se de que o workflow de CD no outro repositório chama-se exatamente cd.yml
+        ref: master
         inputs: |
-          repo_name: login.php
+          repo_name: Pgabriel2605/logiin-php
