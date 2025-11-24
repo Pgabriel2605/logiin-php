@@ -1,33 +1,15 @@
-name: CI/CD PHP Login
+name: CI PHP Login
 
 on:
   push:
     branches:
-      - C-Master
-  workflow_dispatch:
+      - C-Master   # branch do seu projeto
+  workflow_dispatch:  # permite rodar manualmente
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout do código
-        uses: actions/checkout@v3
-
-      - name: Instalar PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.1'
-
-      - name: Rodar testes
-        run: php -l index.php
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout do código
-        uses: actions/checkout@v3
-
-      - name: Deploy
-        run: |
-          echo "Aqui vai o comando de deploy"
+  call-reusable-ci:
+    uses: Pgabriel2605/php-workflowss/.github/workflows/login.yml@main
+    with:
+      php-version: '8.2'
+    secrets:
+      REPO_PAT: ${{ secrets.REPO_PAT }}
